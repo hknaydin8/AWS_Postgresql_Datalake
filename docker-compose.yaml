@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    command: ["-d", "mytestdbinstance.cbi406oool0a.eu-central-1.rds.amazonaws.com"]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
